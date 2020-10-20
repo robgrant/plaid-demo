@@ -1,0 +1,16 @@
+overwrite: true
+schema: "./src/typeDefs.ts"
+documents: null
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-resolvers"
+    config:
+      mappers:
+        Account: plaid#Account
+        Balances: AccountModel["balances"]
+        Institution: plaid#Institution
+        Transaction: plaid#Transaction
+      mapperTypeSuffix: Model
+      useIndexSignature: true
